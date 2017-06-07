@@ -11,11 +11,17 @@ http://www.ReversePOCO.com
 
 http://efreversepoco.codeplex.com/releases
 
-PM>Install-PAckage EntityFramework
+PM>Install-Package EntityFramework
 
 ## Northwind data base
 
 https://northwinddatabase.codeplex.com
+
+### Northwind data base admin user
+
+Create and grant full access to:
+
+northwinddbadmin
 
 ## Connection string
 
