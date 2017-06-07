@@ -5,6 +5,8 @@
     using System.Data.Entity;
     using System.Linq;
 
+    using ConsoleNorthwind.Data;
+
     class Program
     {
         static void Main(string[] args)
