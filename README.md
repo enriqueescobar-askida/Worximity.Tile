@@ -13,6 +13,10 @@ http://efreversepoco.codeplex.com/releases
 
 PM>Install-PAckage EntityFramework
 
+## Northwind data base
+
+https://northwinddatabase.codeplex.com
+
 ## Connection string
 
     <add name="NorthwindDbContext" providerName="System.Data.SqlClient" connectionString="Data Source=.\;User ID=northwinddbadmin;Password=Chest3r!;Trusted_Connection=False;Application Name=NorthwindDemo"/>
