@@ -87,7 +87,6 @@ namespace ConsoleNorthwind.Data
 
     }
 
-    #endregion
 
 }
 // </auto-generated>
