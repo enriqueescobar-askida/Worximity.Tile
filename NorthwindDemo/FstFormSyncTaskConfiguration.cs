@@ -10,6 +10,8 @@
 // TargetFrameworkVersion = 4.7
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NorthwindDemo
 {
@@ -25,23 +27,13 @@ namespace NorthwindDemo
 
         public FstFormSyncTaskConfiguration(string schema)
         {
-            ToTable("FST_FormSyncTasks", schema);
-            HasKey(x => x.FstIId);
+            Property(x => x.FstCAction).IsOptional().IsUnicode(false);
+            Property(x => x.CliCId).IsOptional();
+            Property(x => x.FodCId).IsOptional();
+            Property(x => x.FdvCId).IsOptional();
+            Property(x => x.FdcIId).IsOptional();
+            Property(x => x.FstCError).IsOptional().IsUnicode(false);
 
-            Property(x => x.FstIId).HasColumnName(@"FST_iID").HasColumnType("bigint").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
-            Property(x => x.FstDtCreated).HasColumnName(@"FST_dtCreated").HasColumnType("datetime").IsRequired();
-            Property(x => x.FstCAction).HasColumnName(@"FST_cAction").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(50);
-            Property(x => x.CliCId).HasColumnName(@"CLI_cID").HasColumnType("uniqueidentifier").IsOptional();
-            Property(x => x.FodCId).HasColumnName(@"FOD_cID").HasColumnType("uniqueidentifier").IsOptional();
-            Property(x => x.FdvCId).HasColumnName(@"FDV_cID").HasColumnType("uniqueidentifier").IsOptional();
-            Property(x => x.FdcIId).HasColumnName(@"FDC_iID").HasColumnType("bigint").IsOptional();
-            Property(x => x.FstCError).HasColumnName(@"FST_cError").HasColumnType("varchar(max)").IsOptional().IsUnicode(false);
-
-            // Foreign keys
-            HasOptional(a => a.CliClient).WithMany(b => b.FstFormSyncTasks).HasForeignKey(c => c.CliCId).WillCascadeOnDelete(false); // FK_FST_FormSyncTasks_CLI_Clients
-            HasOptional(a => a.FdcFormDefinitionVersionClient).WithMany(b => b.FstFormSyncTasks).HasForeignKey(c => c.FdcIId).WillCascadeOnDelete(false); // FK_FST_FormSyncTasks_FDC_FormDefinitionVersionClients
-            HasOptional(a => a.FdvFormDefinitionVersion).WithMany(b => b.FstFormSyncTasks).HasForeignKey(c => c.FdvCId).WillCascadeOnDelete(false); // FK_FST_FormSyncTasks_FDV_FormDefinitionVersions
-            HasOptional(a => a.FodFormDefinition).WithMany(b => b.FstFormSyncTasks).HasForeignKey(c => c.FodCId).WillCascadeOnDelete(false); // FK_FST_FormSyncTasks_FOD_FormDefinitions
         }
     }
 

@@ -10,6 +10,8 @@
 // TargetFrameworkVersion = 4.7
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NorthwindDemo
 {
@@ -25,41 +27,23 @@ namespace NorthwindDemo
 
         public UserAccountConfiguration(string schema)
         {
-            ToTable("UserAccount", schema);
-            HasKey(x => x.UserAccountId);
+            Property(x => x.Deleted).IsOptional();
+            Property(x => x.Password).IsOptional();
+            Property(x => x.FirstName).IsOptional();
+            Property(x => x.LastName).IsOptional();
+            Property(x => x.PhoneNumber).IsOptional();
+            Property(x => x.Address).IsOptional();
+            Property(x => x.City).IsOptional();
+            Property(x => x.State).IsOptional();
+            Property(x => x.Country).IsOptional();
+            Property(x => x.PostalCode).IsOptional();
+            Property(x => x.EmailRegistrationToken).IsOptional();
+            Property(x => x.ForgottenPasswordToken).IsOptional();
+            Property(x => x.ForgottenPasswordCreatedDate).IsOptional();
+            Property(x => x.CompanyId).IsOptional();
+            Property(x => x.UserAccountGroupId).IsOptional();
+            Property(x => x.TempPassword).IsOptional();
 
-            Property(x => x.UserAccountId).HasColumnName(@"UserAccountId").HasColumnType("bigint").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
-            Property(x => x.Created).HasColumnName(@"Created").HasColumnType("datetime").IsRequired();
-            Property(x => x.LastModified).HasColumnName(@"LastModified").HasColumnType("datetime").IsRequired();
-            Property(x => x.Deleted).HasColumnName(@"Deleted").HasColumnType("datetime").IsOptional();
-            Property(x => x.Email).HasColumnName(@"Email").HasColumnType("nvarchar").IsRequired().HasMaxLength(100);
-            Property(x => x.Password).HasColumnName(@"Password").HasColumnType("nvarchar").IsOptional().HasMaxLength(250);
-            Property(x => x.MustChangePassword).HasColumnName(@"MustChangePassword").HasColumnType("bit").IsRequired();
-            Property(x => x.FirstName).HasColumnName(@"FirstName").HasColumnType("nvarchar").IsOptional().HasMaxLength(100);
-            Property(x => x.LastName).HasColumnName(@"LastName").HasColumnType("nvarchar").IsOptional().HasMaxLength(100);
-            Property(x => x.PhoneNumber).HasColumnName(@"PhoneNumber").HasColumnType("nvarchar").IsOptional().HasMaxLength(50);
-            Property(x => x.Address).HasColumnName(@"Address").HasColumnType("nvarchar").IsOptional().HasMaxLength(100);
-            Property(x => x.City).HasColumnName(@"City").HasColumnType("nvarchar").IsOptional().HasMaxLength(100);
-            Property(x => x.State).HasColumnName(@"State").HasColumnType("nvarchar").IsOptional().HasMaxLength(100);
-            Property(x => x.Country).HasColumnName(@"Country").HasColumnType("nvarchar").IsOptional().HasMaxLength(100);
-            Property(x => x.PostalCode).HasColumnName(@"PostalCode").HasColumnType("nvarchar").IsOptional().HasMaxLength(50);
-            Property(x => x.EmailRegistrationToken).HasColumnName(@"EmailRegistrationToken").HasColumnType("uniqueidentifier").IsOptional();
-            Property(x => x.ForgottenPasswordToken).HasColumnName(@"ForgottenPasswordToken").HasColumnType("uniqueidentifier").IsOptional();
-            Property(x => x.ForgottenPasswordCreatedDate).HasColumnName(@"ForgottenPasswordCreatedDate").HasColumnType("datetime").IsOptional();
-            Property(x => x.EmailRegistered).HasColumnName(@"EmailRegistered").HasColumnType("bit").IsRequired();
-            Property(x => x.SystemUser).HasColumnName(@"SystemUser").HasColumnType("bit").IsRequired();
-            Property(x => x.Active).HasColumnName(@"Active").HasColumnType("bit").IsRequired();
-            Property(x => x.CompanyId).HasColumnName(@"CompanyId").HasColumnType("bigint").IsOptional();
-            Property(x => x.UserAccountGroupId).HasColumnName(@"UserAccountGroupId").HasColumnType("bigint").IsOptional();
-            Property(x => x.TempPassword).HasColumnName(@"TempPassword").HasColumnType("nvarchar").IsOptional().HasMaxLength(250);
-            Property(x => x.IsDev).HasColumnName(@"IsDev").HasColumnType("bit").IsRequired();
-            Property(x => x.ResetCache).HasColumnName(@"ResetCache").HasColumnType("bit").IsRequired();
-            Property(x => x.UploadFormImages).HasColumnName(@"UploadFormImages").HasColumnType("bit").IsRequired();
-            Property(x => x.CanImpersonate).HasColumnName(@"CanImpersonate").HasColumnType("bit").IsRequired();
-
-            // Foreign keys
-            HasOptional(a => a.Company).WithMany(b => b.UserAccounts).HasForeignKey(c => c.CompanyId).WillCascadeOnDelete(false); // FK_USA_UserAccounts_USC_Company
-            HasOptional(a => a.UserAccountGroup).WithMany(b => b.UserAccounts).HasForeignKey(c => c.UserAccountGroupId).WillCascadeOnDelete(false); // FK_USA_UserAccounts_UAG_UserAccountGroups
         }
     }
 

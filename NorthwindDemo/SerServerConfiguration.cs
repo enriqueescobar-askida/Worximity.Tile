@@ -10,6 +10,8 @@
 // TargetFrameworkVersion = 4.7
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NorthwindDemo
 {
@@ -25,19 +27,10 @@ namespace NorthwindDemo
 
         public SerServerConfiguration(string schema)
         {
-            ToTable("SER_Servers", schema);
-            HasKey(x => x.SerCId);
-
-            Property(x => x.SerCId).HasColumnName(@"SER_cID").HasColumnType("uniqueidentifier").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
-            Property(x => x.SerDtCreated).HasColumnName(@"SER_dtCreated").HasColumnType("datetime").IsRequired();
-            Property(x => x.SerDtLastModified).HasColumnName(@"SER_dtLastModified").HasColumnType("datetime").IsRequired();
-            Property(x => x.SerDtDeleted).HasColumnName(@"SER_dtDeleted").HasColumnType("datetime").IsOptional();
-            Property(x => x.SerVcName).HasColumnName(@"SER_vcName").HasColumnType("nvarchar").IsRequired().HasMaxLength(50);
-            Property(x => x.SerVcJobAgentTag).HasColumnName(@"SER_vcJobAgentTag").HasColumnType("nvarchar").IsOptional().HasMaxLength(50);
-            Property(x => x.SerVcConnectionStringEntities).HasColumnName(@"SER_vcConnectionStringEntities").HasColumnType("nvarchar(max)").IsOptional();
-            Property(x => x.SerVcConnectionString).HasColumnName(@"SER_vcConnectionString").HasColumnType("nvarchar(max)").IsOptional();
-            Property(x => x.SerBEnabled).HasColumnName(@"SER_bEnabled").HasColumnType("bit").IsRequired();
-            Property(x => x.SerBCreateClientAvailable).HasColumnName(@"SER_bCreateClientAvailable").HasColumnType("bit").IsRequired();
+            Property(x => x.SerDtDeleted).IsOptional();
+            Property(x => x.SerVcJobAgentTag).IsOptional();
+            Property(x => x.SerVcConnectionStringEntities).IsOptional();
+            Property(x => x.SerVcConnectionString).IsOptional();
         }
     }
 

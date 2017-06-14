@@ -10,34 +10,134 @@
 // TargetFrameworkVersion = 4.7
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NorthwindDemo
 {
 
     // CLI_Clients
+    [Table("CLI_Clients", Schema = "dbo")]
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.31.1.0")]
     public class CliClient
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Column(@"CLI_cID", Order = 1, TypeName = "uniqueidentifier")]
+        [Index(@"PK_CLI_Clients", 1, IsUnique = true, IsClustered = true)]
+        [Required]
+        [Key]
+        [Display(Name = "Cli c ID")]
         public System.Guid CliCId { get; set; } // CLI_cID (Primary key)
+
+        [Column(@"CLI_dtCreated", Order = 2, TypeName = "datetime")]
+        [Required]
+        [Display(Name = "Cli dt created")]
         public System.DateTime CliDtCreated { get; set; } // CLI_dtCreated
+
+        [Column(@"CLI_dtLastModified", Order = 3, TypeName = "datetime")]
+        [Required]
+        [Display(Name = "Cli dt last modified")]
         public System.DateTime CliDtLastModified { get; set; } // CLI_dtLastModified
+
+        [Column(@"CLI_dtDeleted", Order = 4, TypeName = "datetime")]
+        [Display(Name = "Cli dt deleted")]
         public System.DateTime? CliDtDeleted { get; set; } // CLI_dtDeleted
+
+        [Column(@"CLI_cName", Order = 5, TypeName = "nvarchar")]
+        [Index(@"IX_CLI_Clients_Name", 1, IsUnique = false, IsClustered = false)]
+        [Required]
+        [MaxLength(80)]
+        [StringLength(80)]
+        [Display(Name = "Cli c name")]
         public string CliCName { get; set; } // CLI_cName (length: 80)
+
+        [Column(@"CLI_cPrefix", Order = 6, TypeName = "varchar")]
+        [Index(@"IX_CLI_Clients_Prefix", 1, IsUnique = true, IsClustered = false)]
+        [Required]
+        [MaxLength(80)]
+        [StringLength(80)]
+        [Display(Name = "Cli c prefix")]
         public string CliCPrefix { get; set; } // CLI_cPrefix (length: 80)
+
+        [Column(@"CLI_cMainUrl", Order = 7, TypeName = "varchar")]
+        [MaxLength(100)]
+        [StringLength(100)]
+        [Display(Name = "Cli c main url")]
         public string CliCMainUrl { get; set; } // CLI_cMainUrl (length: 100)
+
+        [Column(@"CLI_cFormsUrl", Order = 8, TypeName = "varchar")]
+        [MaxLength(100)]
+        [StringLength(100)]
+        [Display(Name = "Cli c forms url")]
         public string CliCFormsUrl { get; set; } // CLI_cFormsUrl (length: 100)
+
+        [Column(@"CLI_cSignalrUrl", Order = 9, TypeName = "varchar")]
+        [MaxLength(100)]
+        [StringLength(100)]
+        [Display(Name = "Cli c signalr url")]
         public string CliCSignalrUrl { get; set; } // CLI_cSignalrUrl (length: 100)
+
+        [Column(@"CLI_cFtpUrl", Order = 10, TypeName = "varchar")]
+        [MaxLength(100)]
+        [StringLength(100)]
+        [Display(Name = "Cli c ftp url")]
         public string CliCFtpUrl { get; set; } // CLI_cFtpUrl (length: 100)
+
+        [Column(@"CLI_cExternMainUrl", Order = 11, TypeName = "varchar")]
+        [MaxLength(100)]
+        [StringLength(100)]
+        [Display(Name = "Cli c extern main url")]
         public string CliCExternMainUrl { get; set; } // CLI_cExternMainUrl (length: 100)
+
+        [Column(@"CLI_cExternFormsUrl", Order = 12, TypeName = "varchar")]
+        [MaxLength(100)]
+        [StringLength(100)]
+        [Display(Name = "Cli c extern forms url")]
         public string CliCExternFormsUrl { get; set; } // CLI_cExternFormsUrl (length: 100)
+
+        [Column(@"CLI_cExternSignalrUrl", Order = 13, TypeName = "varchar")]
+        [MaxLength(100)]
+        [StringLength(100)]
+        [Display(Name = "Cli c extern signalr url")]
         public string CliCExternSignalrUrl { get; set; } // CLI_cExternSignalrUrl (length: 100)
+
+        [Column(@"CLI_cExternFtpUrl", Order = 14, TypeName = "varchar")]
+        [MaxLength(100)]
+        [StringLength(100)]
+        [Display(Name = "Cli c extern ftp url")]
         public string CliCExternFtpUrl { get; set; } // CLI_cExternFtpUrl (length: 100)
+
+        [Column(@"CLI_bEnabled", Order = 15, TypeName = "bit")]
+        [Required]
+        [Display(Name = "Cli b enabled")]
         public bool CliBEnabled { get; set; } // CLI_bEnabled
+
+        [Column(@"CLI_bSensorEnabled", Order = 16, TypeName = "bit")]
+        [Display(Name = "Cli b sensor enabled")]
         public bool? CliBSensorEnabled { get; set; } // CLI_bSensorEnabled
+
+        [Column(@"SER_cID", Order = 17, TypeName = "uniqueidentifier")]
+        [Display(Name = "Ser c ID")]
         public System.Guid? SerCId { get; set; } // SER_cID
+
+        [Column(@"CLI_bFormSync", Order = 18, TypeName = "bit")]
+        [Required]
+        [Display(Name = "Cli b form sync")]
         public bool CliBFormSync { get; set; } // CLI_bFormSync
+
+        [Column(@"CLI_bAzureMigrated", Order = 19, TypeName = "bit")]
+        [Required]
+        [Display(Name = "Cli b azure migrated")]
         public bool CliBAzureMigrated { get; set; } // CLI_bAzureMigrated
+
+        [Column(@"CLI_bIsDev", Order = 20, TypeName = "bit")]
+        [Required]
+        [Display(Name = "Cli b is dev")]
         public bool CliBIsDev { get; set; } // CLI_bIsDev
+
+        [Column(@"CLI_bAllowPasswordMsgRecoveryNotFound", Order = 21, TypeName = "bit")]
+        [Required]
+        [Display(Name = "Cli b allow password msg recovery not found")]
         public bool CliBAllowPasswordMsgRecoveryNotFound { get; set; } // CLI_bAllowPasswordMsgRecoveryNotFound
 
         // Reverse navigation
@@ -72,7 +172,7 @@ namespace NorthwindDemo
         /// <summary>
         /// Parent SerServer pointed by [CLI_Clients].([SerCId]) (FK_CLI_Clients_SER_Servers)
         /// </summary>
-        public virtual SerServer SerServer { get; set; } // FK_CLI_Clients_SER_Servers
+        [ForeignKey("SerCId")] public virtual SerServer SerServer { get; set; } // FK_CLI_Clients_SER_Servers
 
         public CliClient()
         {

@@ -10,6 +10,8 @@
 // TargetFrameworkVersion = 4.7
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NorthwindDemo
 {
@@ -25,16 +27,9 @@ namespace NorthwindDemo
 
         public KitTemplateAttributeConfiguration(string schema)
         {
-            ToTable("KitTemplateAttribute", schema);
-            HasKey(x => x.KitTemplateAttributeId);
+            Property(x => x.Name).IsOptional();
+            Property(x => x.Identifier).IsOptional();
 
-            Property(x => x.KitTemplateAttributeId).HasColumnName(@"KitTemplateAttributeId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
-            Property(x => x.KitTemplateId).HasColumnName(@"KitTemplateId").HasColumnType("int").IsRequired();
-            Property(x => x.Name).HasColumnName(@"Name").HasColumnType("nvarchar").IsOptional().HasMaxLength(200);
-            Property(x => x.Identifier).HasColumnName(@"Identifier").HasColumnType("nvarchar").IsOptional().HasMaxLength(50);
-
-            // Foreign keys
-            HasRequired(a => a.KitTemplate).WithMany(b => b.KitTemplateAttributes).HasForeignKey(c => c.KitTemplateId).WillCascadeOnDelete(false); // FK_KitTemplateAttribute_KitTemplate
         }
     }
 

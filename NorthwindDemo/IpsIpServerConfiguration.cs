@@ -10,6 +10,8 @@
 // TargetFrameworkVersion = 4.7
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NorthwindDemo
 {
@@ -25,20 +27,15 @@ namespace NorthwindDemo
 
         public IpsIpServerConfiguration(string schema)
         {
-            ToTable("IPS_IpServers", schema);
-            HasKey(x => x.IpsIId);
-
-            Property(x => x.IpsIId).HasColumnName(@"IPS_iID").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
-            Property(x => x.IpsCTag).HasColumnName(@"IPS_cTag").HasColumnType("nvarchar").IsOptional().HasMaxLength(50);
-            Property(x => x.IpsCWebService).HasColumnName(@"IPS_cWebService").HasColumnType("nvarchar").IsOptional().HasMaxLength(1024);
-            Property(x => x.IpsCSignalRService).HasColumnName(@"IPS_cSignalRService").HasColumnType("nvarchar").IsOptional().HasMaxLength(1024);
-            Property(x => x.IpsCFtpService).HasColumnName(@"IPS_cFtpService").HasColumnType("nvarchar").IsOptional().HasMaxLength(1024);
-            Property(x => x.IpsCSqlIpAddress).HasColumnName(@"IPS_cSqlIpAddress").HasColumnType("nvarchar").IsOptional().HasMaxLength(1024);
-            Property(x => x.IpsCBasicSqlAuthentification).HasColumnName(@"IPS_cBasicSQLAuthentification").HasColumnType("nvarchar").IsOptional().HasMaxLength(1024);
-            Property(x => x.IpsCConnectionString).HasColumnName(@"IPS_cConnectionString").HasColumnType("nvarchar").IsOptional().HasMaxLength(1024);
-            Property(x => x.IpsCEntitiesConnectionString).HasColumnName(@"IPS_cEntitiesConnectionString").HasColumnType("nvarchar").IsOptional().HasMaxLength(1024);
-            Property(x => x.IpsCNewDatabaseSource).HasColumnName(@"IPS_cNewDatabaseSource").HasColumnType("nvarchar(max)").IsOptional();
-            Property(x => x.IpsBEnabled).HasColumnName(@"IPS_bEnabled").HasColumnType("bit").IsRequired();
+            Property(x => x.IpsCTag).IsOptional();
+            Property(x => x.IpsCWebService).IsOptional();
+            Property(x => x.IpsCSignalRService).IsOptional();
+            Property(x => x.IpsCFtpService).IsOptional();
+            Property(x => x.IpsCSqlIpAddress).IsOptional();
+            Property(x => x.IpsCBasicSqlAuthentification).IsOptional();
+            Property(x => x.IpsCConnectionString).IsOptional();
+            Property(x => x.IpsCEntitiesConnectionString).IsOptional();
+            Property(x => x.IpsCNewDatabaseSource).IsOptional();
         }
     }
 

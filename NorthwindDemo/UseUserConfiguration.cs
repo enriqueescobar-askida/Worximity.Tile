@@ -10,6 +10,8 @@
 // TargetFrameworkVersion = 4.7
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NorthwindDemo
 {
@@ -25,26 +27,11 @@ namespace NorthwindDemo
 
         public UseUserConfiguration(string schema)
         {
-            ToTable("USE_Users", schema);
-            HasKey(x => x.UseCId);
+            Property(x => x.UseDtDeleted).IsOptional();
+            Property(x => x.UnoCId).IsOptional();
+            Property(x => x.UseCRestApiKey).IsOptional();
+            Property(x => x.MusIId).IsOptional();
 
-            Property(x => x.UseIId).HasColumnName(@"USE_iID").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
-            Property(x => x.UseCId).HasColumnName(@"USE_cID").HasColumnType("uniqueidentifier").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
-            Property(x => x.UseDtCreated).HasColumnName(@"USE_dtCreated").HasColumnType("datetime").IsRequired();
-            Property(x => x.UseDtLastModified).HasColumnName(@"USE_dtLastModified").HasColumnType("datetime").IsRequired();
-            Property(x => x.UseDtDeleted).HasColumnName(@"USE_dtDeleted").HasColumnType("datetime").IsOptional();
-            Property(x => x.CliCId).HasColumnName(@"CLI_cID").HasColumnType("uniqueidentifier").IsRequired();
-            Property(x => x.UseCEmail).HasColumnName(@"USE_cEmail").HasColumnType("nvarchar").IsRequired().HasMaxLength(80);
-            Property(x => x.UseBExtern).HasColumnName(@"USE_bExtern").HasColumnType("bit").IsRequired();
-            Property(x => x.UseBEnabled).HasColumnName(@"USE_bEnabled").HasColumnType("bit").IsRequired();
-            Property(x => x.UnoCId).HasColumnName(@"UNO_cID").HasColumnType("uniqueidentifier").IsOptional();
-            Property(x => x.UseBIsDev).HasColumnName(@"USE_bIsDev").HasColumnType("bit").IsRequired();
-            Property(x => x.UseCRestApiKey).HasColumnName(@"USE_cRestApiKey").HasColumnType("nvarchar").IsOptional().HasMaxLength(50);
-            Property(x => x.MusIId).HasColumnName(@"MUS_iID").HasColumnType("bigint").IsOptional();
-
-            // Foreign keys
-            HasOptional(a => a.UnoUserNotice).WithMany(b => b.UseUsers).HasForeignKey(c => c.UnoCId).WillCascadeOnDelete(false); // FK_USE_Users_UNO_UserNotices
-            HasRequired(a => a.CliClient).WithMany(b => b.UseUsers).HasForeignKey(c => c.CliCId).WillCascadeOnDelete(false); // FK_USE_Users_CLI_Clients
         }
     }
 

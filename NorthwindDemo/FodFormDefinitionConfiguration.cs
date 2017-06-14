@@ -10,6 +10,8 @@
 // TargetFrameworkVersion = 4.7
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NorthwindDemo
 {
@@ -25,17 +27,8 @@ namespace NorthwindDemo
 
         public FodFormDefinitionConfiguration(string schema)
         {
-            ToTable("FOD_FormDefinitions", schema);
-            HasKey(x => x.FodCId);
-
-            Property(x => x.FodCId).HasColumnName(@"FOD_cID").HasColumnType("uniqueidentifier").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
-            Property(x => x.FodDtCreated).HasColumnName(@"FOD_dtCreated").HasColumnType("datetime").IsRequired();
-            Property(x => x.FodDtLastModified).HasColumnName(@"FOD_dtLastModified").HasColumnType("datetime").IsRequired();
-            Property(x => x.FodDtDeleted).HasColumnName(@"FOD_dtDeleted").HasColumnType("datetime").IsOptional();
-            Property(x => x.FodCName).HasColumnName(@"FOD_cName").HasColumnType("nvarchar").IsRequired().HasMaxLength(100);
-            Property(x => x.FodCDescription).HasColumnName(@"FOD_cDescription").HasColumnType("nvarchar").IsOptional().HasMaxLength(100);
-            Property(x => x.FodBResultByUser).HasColumnName(@"FOD_bResultByUser").HasColumnType("bit").IsRequired();
-            Property(x => x.FodBSubmittedResultByUser).HasColumnName(@"FOD_bSubmittedResultByUser").HasColumnType("bit").IsRequired();
+            Property(x => x.FodDtDeleted).IsOptional();
+            Property(x => x.FodCDescription).IsOptional();
         }
     }
 

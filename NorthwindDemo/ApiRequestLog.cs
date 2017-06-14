@@ -10,19 +10,51 @@
 // TargetFrameworkVersion = 4.7
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NorthwindDemo
 {
 
     // ApiRequestLog
+    [Table("ApiRequestLog", Schema = "dbo")]
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.31.1.0")]
     public class ApiRequestLog
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Column(@"ApiRequesLogtId", Order = 1, TypeName = "bigint")]
+        [Index(@"PK_ApiRequest", 1, IsUnique = true, IsClustered = true)]
+        [Required]
+        [Key]
+        [Display(Name = "Api reques logt ID")]
         public long ApiRequesLogtId { get; set; } // ApiRequesLogtId (Primary key)
+
+        [Column(@"UserAccountId", Order = 2, TypeName = "bigint")]
+        [Required]
+        [Display(Name = "User account ID")]
         public long UserAccountId { get; set; } // UserAccountId
+
+        [Column(@"DateCreated", Order = 3, TypeName = "datetime")]
+        [Required]
+        [Display(Name = "Date created")]
         public System.DateTime DateCreated { get; set; } // DateCreated
+
+        [Column(@"Verb", Order = 4, TypeName = "nvarchar")]
+        [MaxLength(50)]
+        [StringLength(50)]
+        [Display(Name = "Verb")]
         public string Verb { get; set; } // Verb (length: 50)
+
+        [Column(@"Source", Order = 5, TypeName = "nvarchar")]
+        [MaxLength(200)]
+        [StringLength(200)]
+        [Display(Name = "Source")]
         public string Source { get; set; } // Source (length: 200)
+
+        [Column(@"Destination", Order = 6, TypeName = "nvarchar")]
+        [MaxLength(200)]
+        [StringLength(200)]
+        [Display(Name = "Destination")]
         public string Destination { get; set; } // Destination (length: 200)
 
         // Foreign keys
@@ -30,7 +62,7 @@ namespace NorthwindDemo
         /// <summary>
         /// Parent UserAccount pointed by [ApiRequestLog].([UserAccountId]) (FK_ApiRequest_UserAccount)
         /// </summary>
-        public virtual UserAccount UserAccount { get; set; } // FK_ApiRequest_UserAccount
+        [ForeignKey("UserAccountId")] public virtual UserAccount UserAccount { get; set; } // FK_ApiRequest_UserAccount
     }
 
 }

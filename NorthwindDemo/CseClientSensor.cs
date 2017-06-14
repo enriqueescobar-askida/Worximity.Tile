@@ -10,21 +10,60 @@
 // TargetFrameworkVersion = 4.7
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NorthwindDemo
 {
 
     // CSE_ClientSensors
+    [Table("CSE_ClientSensors", Schema = "dbo")]
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.31.1.0")]
     public class CseClientSensor
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Column(@"CSE_cID", Order = 1, TypeName = "uniqueidentifier")]
+        [Index(@"PK_CSE_ClientSensors", 1, IsUnique = true, IsClustered = true)]
+        [Required]
+        [Key]
+        [Display(Name = "Cse c ID")]
         public System.Guid CseCId { get; set; } // CSE_cID (Primary key)
+
+        [Column(@"CSE_dtCreated", Order = 2, TypeName = "datetime")]
+        [Required]
+        [Display(Name = "Cse dt created")]
         public System.DateTime CseDtCreated { get; set; } // CSE_dtCreated
+
+        [Column(@"CSE_dtLastModified", Order = 3, TypeName = "datetime")]
+        [Required]
+        [Display(Name = "Cse dt last modified")]
         public System.DateTime CseDtLastModified { get; set; } // CSE_dtLastModified
+
+        [Column(@"CSE_dtDeleted", Order = 4, TypeName = "datetime")]
+        [Display(Name = "Cse dt deleted")]
         public System.DateTime? CseDtDeleted { get; set; } // CSE_dtDeleted
+
+        [Column(@"CLI_cID", Order = 5, TypeName = "uniqueidentifier")]
+        [Index(@"IX_CSE_CLI_cID", 1, IsUnique = false, IsClustered = false)]
+        [Display(Name = "Cli c ID")]
         public System.Guid? CliCId { get; set; } // CLI_cID
+
+        [Column(@"CSE_bEnabled", Order = 6, TypeName = "bit")]
+        [Required]
+        [Display(Name = "Cse b enabled")]
         public bool CseBEnabled { get; set; } // CSE_bEnabled
+
+        [Column(@"CSE_cKey", Order = 7, TypeName = "varchar")]
+        [Index(@"IX_CSE_cKeyUnicity", 1, IsUnique = true, IsClustered = false)]
+        [MaxLength(50)]
+        [StringLength(50)]
+        [Display(Name = "Cse c key")]
         public string CseCKey { get; set; } // CSE_cKey (length: 50)
+
+        [Column(@"CSE_cDesc", Order = 8, TypeName = "varchar")]
+        [MaxLength(50)]
+        [StringLength(50)]
+        [Display(Name = "Cse c desc")]
         public string CseCDesc { get; set; } // CSE_cDesc (length: 50)
 
         // Foreign keys
@@ -32,7 +71,7 @@ namespace NorthwindDemo
         /// <summary>
         /// Parent CliClient pointed by [CSE_ClientSensors].([CliCId]) (FK_CSE_ClientSensors_CLI_Clients)
         /// </summary>
-        public virtual CliClient CliClient { get; set; } // FK_CSE_ClientSensors_CLI_Clients
+        [ForeignKey("CliCId")] public virtual CliClient CliClient { get; set; } // FK_CSE_ClientSensors_CLI_Clients
 
         public CseClientSensor()
         {

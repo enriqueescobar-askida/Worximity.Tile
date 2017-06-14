@@ -10,6 +10,8 @@
 // TargetFrameworkVersion = 4.7
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NorthwindDemo
 {
@@ -25,16 +27,8 @@ namespace NorthwindDemo
 
         public HfdHistoryFormDefinitionVersionConfiguration(string schema)
         {
-            ToTable("HFD_HistoryFormDefinitionVersions", schema);
-            HasKey(x => x.HfdINoSeq);
+            Property(x => x.HfdCForm).IsOptional();
 
-            Property(x => x.HfdINoSeq).HasColumnName(@"HFD_iNoSeq").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
-            Property(x => x.FdvCId).HasColumnName(@"FDV_cId").HasColumnType("uniqueidentifier").IsRequired();
-            Property(x => x.HfdDtCreated).HasColumnName(@"HFD_dtCreated").HasColumnType("datetime").IsRequired();
-            Property(x => x.HfdCForm).HasColumnName(@"HFD_cForm").HasColumnType("nvarchar(max)").IsOptional();
-
-            // Foreign keys
-            HasRequired(a => a.FdvFormDefinitionVersion).WithMany(b => b.HfdHistoryFormDefinitionVersions).HasForeignKey(c => c.FdvCId).WillCascadeOnDelete(false); // FK_HFD_HistoryFormDefinitionVersions_FDV_FormDefinitionVersions
         }
     }
 

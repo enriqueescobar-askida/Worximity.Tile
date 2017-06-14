@@ -10,6 +10,8 @@
 // TargetFrameworkVersion = 4.7
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NorthwindDemo
 {
@@ -25,21 +27,9 @@ namespace NorthwindDemo
 
         public RightConfiguration(string schema)
         {
-            ToTable("Right", schema);
-            HasKey(x => x.RightId);
+            Property(x => x.UserAccountGroupId).IsOptional();
+            Property(x => x.DatabaseOwnerOnly).IsOptional();
 
-            Property(x => x.RightId).HasColumnName(@"RightId").HasColumnType("bigint").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
-            Property(x => x.RightActionId).HasColumnName(@"RightActionId").HasColumnType("bigint").IsRequired();
-            Property(x => x.UserAccountGroupId).HasColumnName(@"UserAccountGroupId").HasColumnType("bigint").IsOptional();
-            Property(x => x.DatabaseOwnerOnly).HasColumnName(@"DatabaseOwnerOnly").HasColumnType("bit").IsOptional();
-            Property(x => x.CanCreate).HasColumnName(@"CanCreate").HasColumnType("bit").IsRequired();
-            Property(x => x.CanRead).HasColumnName(@"CanRead").HasColumnType("bit").IsRequired();
-            Property(x => x.CanUpdate).HasColumnName(@"CanUpdate").HasColumnType("bit").IsRequired();
-            Property(x => x.CanDelete).HasColumnName(@"CanDelete").HasColumnType("bit").IsRequired();
-
-            // Foreign keys
-            HasOptional(a => a.UserAccountGroup).WithMany(b => b.Rights).HasForeignKey(c => c.UserAccountGroupId).WillCascadeOnDelete(false); // FK_RIG_Rights_UAG_UserAccountGroups
-            HasRequired(a => a.RightAction).WithMany(b => b.Rights).HasForeignKey(c => c.RightActionId).WillCascadeOnDelete(false); // FK_Right_RightAction
         }
     }
 

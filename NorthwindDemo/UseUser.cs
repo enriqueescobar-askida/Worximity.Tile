@@ -10,26 +10,87 @@
 // TargetFrameworkVersion = 4.7
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NorthwindDemo
 {
 
     // USE_Users
+    [Table("USE_Users", Schema = "dbo")]
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.31.1.0")]
     public class UseUser
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Column(@"USE_iID", Order = 1, TypeName = "int")]
+        [Required]
+        [Display(Name = "Use i ID")]
         public int UseIId { get; set; } // USE_iID
+
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Column(@"USE_cID", Order = 2, TypeName = "uniqueidentifier")]
+        [Index(@"PK_USE_Users", 1, IsUnique = true, IsClustered = true)]
+        [Required]
+        [Key]
+        [Display(Name = "Use c ID")]
         public System.Guid UseCId { get; set; } // USE_cID (Primary key)
+
+        [Column(@"USE_dtCreated", Order = 3, TypeName = "datetime")]
+        [Required]
+        [Display(Name = "Use dt created")]
         public System.DateTime UseDtCreated { get; set; } // USE_dtCreated
+
+        [Column(@"USE_dtLastModified", Order = 4, TypeName = "datetime")]
+        [Required]
+        [Display(Name = "Use dt last modified")]
         public System.DateTime UseDtLastModified { get; set; } // USE_dtLastModified
+
+        [Column(@"USE_dtDeleted", Order = 5, TypeName = "datetime")]
+        [Display(Name = "Use dt deleted")]
         public System.DateTime? UseDtDeleted { get; set; } // USE_dtDeleted
+
+        [Column(@"CLI_cID", Order = 6, TypeName = "uniqueidentifier")]
+        [Index(@"IX_USE_Users_EmailUnicity", 2, IsUnique = true, IsClustered = false)]
+        [Required]
+        [Display(Name = "Cli c ID")]
         public System.Guid CliCId { get; set; } // CLI_cID
+
+        [Column(@"USE_cEmail", Order = 7, TypeName = "nvarchar")]
+        [Index(@"IX_USE_Users_EmailUnicity", 1, IsUnique = true, IsClustered = false)]
+        [Required]
+        [MaxLength(80)]
+        [StringLength(80)]
+        [Display(Name = "Use c email")]
         public string UseCEmail { get; set; } // USE_cEmail (length: 80)
+
+        [Column(@"USE_bExtern", Order = 8, TypeName = "bit")]
+        [Required]
+        [Display(Name = "Use b extern")]
         public bool UseBExtern { get; set; } // USE_bExtern
+
+        [Column(@"USE_bEnabled", Order = 9, TypeName = "bit")]
+        [Required]
+        [Display(Name = "Use b enabled")]
         public bool UseBEnabled { get; set; } // USE_bEnabled
+
+        [Column(@"UNO_cID", Order = 10, TypeName = "uniqueidentifier")]
+        [Display(Name = "Uno c ID")]
         public System.Guid? UnoCId { get; set; } // UNO_cID
+
+        [Column(@"USE_bIsDev", Order = 11, TypeName = "bit")]
+        [Required]
+        [Display(Name = "Use b is dev")]
         public bool UseBIsDev { get; set; } // USE_bIsDev
+
+        [Column(@"USE_cRestApiKey", Order = 12, TypeName = "nvarchar")]
+        [Index(@"IX_USE_cRestApiKey", 1, IsUnique = true, IsClustered = false)]
+        [MaxLength(50)]
+        [StringLength(50)]
+        [Display(Name = "Use c rest api key")]
         public string UseCRestApiKey { get; set; } // USE_cRestApiKey (length: 50)
+
+        [Column(@"MUS_iID", Order = 13, TypeName = "bigint")]
+        [Display(Name = "Mus i ID")]
         public long? MusIId { get; set; } // MUS_iID
 
         // Reverse navigation
@@ -44,11 +105,11 @@ namespace NorthwindDemo
         /// <summary>
         /// Parent CliClient pointed by [USE_Users].([CliCId]) (FK_USE_Users_CLI_Clients)
         /// </summary>
-        public virtual CliClient CliClient { get; set; } // FK_USE_Users_CLI_Clients
+        [ForeignKey("CliCId")] public virtual CliClient CliClient { get; set; } // FK_USE_Users_CLI_Clients
         /// <summary>
         /// Parent UnoUserNotice pointed by [USE_Users].([UnoCId]) (FK_USE_Users_UNO_UserNotices)
         /// </summary>
-        public virtual UnoUserNotice UnoUserNotice { get; set; } // FK_USE_Users_UNO_UserNotices
+        [ForeignKey("UnoCId")] public virtual UnoUserNotice UnoUserNotice { get; set; } // FK_USE_Users_UNO_UserNotices
 
         public UseUser()
         {

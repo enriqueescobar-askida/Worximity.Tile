@@ -10,6 +10,8 @@
 // TargetFrameworkVersion = 4.7
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NorthwindDemo
 {
@@ -25,12 +27,8 @@ namespace NorthwindDemo
 
         public PrePreferenceConfiguration(string schema)
         {
-            ToTable("PRE_Preferences", schema);
-            HasKey(x => x.PreIId);
-
-            Property(x => x.PreIId).HasColumnName(@"PRE_iID").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
-            Property(x => x.PreCKey).HasColumnName(@"PRE_cKey").HasColumnType("nvarchar").IsOptional().HasMaxLength(100);
-            Property(x => x.PreCValue).HasColumnName(@"PRE_cValue").HasColumnType("nvarchar").IsOptional().HasMaxLength(1024);
+            Property(x => x.PreCKey).IsOptional();
+            Property(x => x.PreCValue).IsOptional();
         }
     }
 

@@ -10,6 +10,8 @@
 // TargetFrameworkVersion = 4.7
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NorthwindDemo
 {
@@ -25,17 +27,7 @@ namespace NorthwindDemo
 
         public UserAccountClientConfiguration(string schema)
         {
-            ToTable("UserAccountClient", schema);
-            HasKey(x => x.UserAccountClientId);
 
-            Property(x => x.UserAccountClientId).HasColumnName(@"UserAccountClientId").HasColumnType("bigint").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
-            Property(x => x.UserAccountId).HasColumnName(@"UserAccountId").HasColumnType("bigint").IsRequired();
-            Property(x => x.CliCId).HasColumnName(@"CLI_cID").HasColumnType("uniqueidentifier").IsRequired();
-            Property(x => x.DatabaseOwner).HasColumnName(@"DatabaseOwner").HasColumnType("bit").IsRequired();
-
-            // Foreign keys
-            HasRequired(a => a.CliClient).WithMany(b => b.UserAccountClients).HasForeignKey(c => c.CliCId).WillCascadeOnDelete(false); // FK_UAC_UserAccountClients_CLI_Clients
-            HasRequired(a => a.UserAccount).WithMany(b => b.UserAccountClients).HasForeignKey(c => c.UserAccountId).WillCascadeOnDelete(false); // FK_UAC_UserAccountClients_USA_UserAccounts
         }
     }
 

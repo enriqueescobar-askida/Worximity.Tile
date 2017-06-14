@@ -10,6 +10,8 @@
 // TargetFrameworkVersion = 4.7
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NorthwindDemo
 {
@@ -25,23 +27,15 @@ namespace NorthwindDemo
 
         public KitTemplateMeasureDefinitionConfiguration(string schema)
         {
-            ToTable("KitTemplateMeasureDefinition", schema);
-            HasKey(x => x.KitTemplateMeasureDefinitionId);
+            Property(x => x.KitTemplateId).IsOptional();
+            Property(x => x.Unit).IsOptional();
+            Property(x => x.MeasureType).IsUnicode(false);
+            Property(x => x.Formula).IsOptional();
+            Property(x => x.FormatString).IsOptional();
+            Property(x => x.UnitFormat).IsOptional();
+            Property(x => x.Form).IsOptional();
+            Property(x => x.FodCId).IsOptional();
 
-            Property(x => x.KitTemplateMeasureDefinitionId).HasColumnName(@"KitTemplateMeasureDefinitionId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
-            Property(x => x.KitTemplateId).HasColumnName(@"KitTemplateId").HasColumnType("int").IsOptional();
-            Property(x => x.Name).HasColumnName(@"Name").HasColumnType("nvarchar").IsRequired().HasMaxLength(80);
-            Property(x => x.Unit).HasColumnName(@"Unit").HasColumnType("nvarchar").IsOptional().HasMaxLength(30);
-            Property(x => x.MeasureType).HasColumnName(@"MeasureType").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(5);
-            Property(x => x.Formula).HasColumnName(@"Formula").HasColumnType("nvarchar").IsOptional().HasMaxLength(512);
-            Property(x => x.FormatString).HasColumnName(@"FormatString").HasColumnType("nvarchar").IsOptional().HasMaxLength(30);
-            Property(x => x.UnitFormat).HasColumnName(@"UnitFormat").HasColumnType("nvarchar").IsOptional().HasMaxLength(200);
-            Property(x => x.Form).HasColumnName(@"Form").HasColumnType("nvarchar(max)").IsOptional();
-            Property(x => x.FodCId).HasColumnName(@"FOD_cID").HasColumnType("uniqueidentifier").IsOptional();
-
-            // Foreign keys
-            HasOptional(a => a.FodFormDefinition).WithMany(b => b.KitTemplateMeasureDefinitions).HasForeignKey(c => c.FodCId).WillCascadeOnDelete(false); // FK_KitTemplateMeasureDefinition_FOD_FormDefinitions
-            HasOptional(a => a.KitTemplate).WithMany(b => b.KitTemplateMeasureDefinitions).HasForeignKey(c => c.KitTemplateId).WillCascadeOnDelete(false); // FK_KitTemplateMeasureDefinition_KitTemplate
         }
     }
 

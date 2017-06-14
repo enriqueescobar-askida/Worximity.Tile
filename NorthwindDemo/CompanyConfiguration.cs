@@ -10,6 +10,8 @@
 // TargetFrameworkVersion = 4.7
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NorthwindDemo
 {
@@ -25,12 +27,8 @@ namespace NorthwindDemo
 
         public CompanyConfiguration(string schema)
         {
-            ToTable("Company", schema);
-            HasKey(x => x.CompanyId);
-
-            Property(x => x.CompanyId).HasColumnName(@"CompanyId").HasColumnType("bigint").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
-            Property(x => x.Name).HasColumnName(@"Name").HasColumnType("nvarchar").IsOptional().HasMaxLength(100);
-            Property(x => x.Phone).HasColumnName(@"Phone").HasColumnType("nvarchar").IsOptional().HasMaxLength(100);
+            Property(x => x.Name).IsOptional();
+            Property(x => x.Phone).IsOptional();
         }
     }
 

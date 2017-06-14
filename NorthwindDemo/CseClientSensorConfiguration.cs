@@ -10,6 +10,8 @@
 // TargetFrameworkVersion = 4.7
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NorthwindDemo
 {
@@ -25,20 +27,11 @@ namespace NorthwindDemo
 
         public CseClientSensorConfiguration(string schema)
         {
-            ToTable("CSE_ClientSensors", schema);
-            HasKey(x => x.CseCId);
+            Property(x => x.CseDtDeleted).IsOptional();
+            Property(x => x.CliCId).IsOptional();
+            Property(x => x.CseCKey).IsOptional().IsUnicode(false);
+            Property(x => x.CseCDesc).IsOptional().IsUnicode(false);
 
-            Property(x => x.CseCId).HasColumnName(@"CSE_cID").HasColumnType("uniqueidentifier").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
-            Property(x => x.CseDtCreated).HasColumnName(@"CSE_dtCreated").HasColumnType("datetime").IsRequired();
-            Property(x => x.CseDtLastModified).HasColumnName(@"CSE_dtLastModified").HasColumnType("datetime").IsRequired();
-            Property(x => x.CseDtDeleted).HasColumnName(@"CSE_dtDeleted").HasColumnType("datetime").IsOptional();
-            Property(x => x.CliCId).HasColumnName(@"CLI_cID").HasColumnType("uniqueidentifier").IsOptional();
-            Property(x => x.CseBEnabled).HasColumnName(@"CSE_bEnabled").HasColumnType("bit").IsRequired();
-            Property(x => x.CseCKey).HasColumnName(@"CSE_cKey").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(50);
-            Property(x => x.CseCDesc).HasColumnName(@"CSE_cDesc").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(50);
-
-            // Foreign keys
-            HasOptional(a => a.CliClient).WithMany(b => b.CseClientSensors).HasForeignKey(c => c.CliCId).WillCascadeOnDelete(false); // FK_CSE_ClientSensors_CLI_Clients
         }
     }
 

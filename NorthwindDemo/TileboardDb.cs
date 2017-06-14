@@ -9,7 +9,7 @@
 // The following connection settings were used to generate this file:
 //     Configuration file:     "NorthwindDemo\App.config"
 //     Connection String Name: "TileboardLocatorContext"
-//     Connection String:      "Data Source=(local);Initial Catalog=TileboardLocator;Integrated Security=True;Application Name=NorthwindDemo"
+//     Connection String:      "Data Source=(local);Initial Catalog=TileboardLocator;Integrated Security=True;Application Name=LocatorDemo"
 // ------------------------------------------------------------------------------------------------
 // Database Edition       : Developer Edition (64-bit)
 // Database Engine Edition: Enterprise
@@ -26,6 +26,8 @@
 // TargetFrameworkVersion = 4.7
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NorthwindDemo
 {

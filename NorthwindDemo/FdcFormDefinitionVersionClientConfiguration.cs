@@ -10,6 +10,8 @@
 // TargetFrameworkVersion = 4.7
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NorthwindDemo
 {
@@ -25,17 +27,8 @@ namespace NorthwindDemo
 
         public FdcFormDefinitionVersionClientConfiguration(string schema)
         {
-            ToTable("FDC_FormDefinitionVersionClients", schema);
-            HasKey(x => x.FdcIId);
+            Property(x => x.FdcDtDeleted).IsOptional();
 
-            Property(x => x.FdcIId).HasColumnName(@"FDC_iID").HasColumnType("bigint").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
-            Property(x => x.CliCId).HasColumnName(@"CLI_cID").HasColumnType("uniqueidentifier").IsRequired();
-            Property(x => x.FodCId).HasColumnName(@"FOD_cID").HasColumnType("uniqueidentifier").IsRequired();
-            Property(x => x.FdcDtDeleted).HasColumnName(@"FDC_dtDeleted").HasColumnType("datetime").IsOptional();
-
-            // Foreign keys
-            HasRequired(a => a.CliClient).WithMany(b => b.FdcFormDefinitionVersionClients).HasForeignKey(c => c.CliCId).WillCascadeOnDelete(false); // FK_FDC_FormDefinitionVersionClients_CLI_Clients
-            HasRequired(a => a.FodFormDefinition).WithMany(b => b.FdcFormDefinitionVersionClients).HasForeignKey(c => c.FodCId).WillCascadeOnDelete(false); // FK_FDC_FormDefinitionVersionClients_FOD_FormDefinitions
         }
     }
 

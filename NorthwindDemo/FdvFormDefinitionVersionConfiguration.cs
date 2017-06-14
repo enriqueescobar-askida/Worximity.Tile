@@ -10,6 +10,8 @@
 // TargetFrameworkVersion = 4.7
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NorthwindDemo
 {
@@ -25,22 +27,13 @@ namespace NorthwindDemo
 
         public FdvFormDefinitionVersionConfiguration(string schema)
         {
-            ToTable("FDV_FormDefinitionVersions", schema);
-            HasKey(x => x.FdvCId);
+            Property(x => x.FdvDtDeleted).IsOptional();
+            Property(x => x.FdvCVersion).IsUnicode(false);
+            Property(x => x.FdvDtBegin).IsOptional();
+            Property(x => x.FdvCForm).IsOptional();
+            Property(x => x.FdvCWebForm).IsOptional();
+            Property(x => x.FdvCTextForm).IsOptional();
 
-            Property(x => x.FdvCId).HasColumnName(@"FDV_cID").HasColumnType("uniqueidentifier").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
-            Property(x => x.FodCId).HasColumnName(@"FOD_cID").HasColumnType("uniqueidentifier").IsRequired();
-            Property(x => x.FdvDtCreated).HasColumnName(@"FDV_dtCreated").HasColumnType("datetime").IsRequired();
-            Property(x => x.FdvDtLastModified).HasColumnName(@"FDV_dtLastModified").HasColumnType("datetime").IsRequired();
-            Property(x => x.FdvDtDeleted).HasColumnName(@"FDV_dtDeleted").HasColumnType("datetime").IsOptional();
-            Property(x => x.FdvCVersion).HasColumnName(@"FDV_cVersion").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(20);
-            Property(x => x.FdvDtBegin).HasColumnName(@"FDV_dtBegin").HasColumnType("datetime").IsOptional();
-            Property(x => x.FdvCForm).HasColumnName(@"FDV_cForm").HasColumnType("xml").IsOptional();
-            Property(x => x.FdvCWebForm).HasColumnName(@"FDV_cWebForm").HasColumnType("xml").IsOptional();
-            Property(x => x.FdvCTextForm).HasColumnName(@"FDV_cTextForm").HasColumnType("nvarchar(max)").IsOptional();
-
-            // Foreign keys
-            HasRequired(a => a.FodFormDefinition).WithMany(b => b.FdvFormDefinitionVersions).HasForeignKey(c => c.FodCId).WillCascadeOnDelete(false); // FK_FDV_FormDefinitionVersions_FOD_FormDefinitions
         }
     }
 

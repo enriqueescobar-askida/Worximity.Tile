@@ -10,17 +10,37 @@
 // TargetFrameworkVersion = 4.7
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NorthwindDemo
 {
 
     // FDC_FormDefinitionVersionClients
+    [Table("FDC_FormDefinitionVersionClients", Schema = "dbo")]
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.31.1.0")]
     public class FdcFormDefinitionVersionClient
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Column(@"FDC_iID", Order = 1, TypeName = "bigint")]
+        [Index(@"PK_FDC_FormDefinitionVersionClients", 1, IsUnique = true, IsClustered = true)]
+        [Required]
+        [Key]
+        [Display(Name = "Fdc i ID")]
         public long FdcIId { get; set; } // FDC_iID (Primary key)
+
+        [Column(@"CLI_cID", Order = 2, TypeName = "uniqueidentifier")]
+        [Required]
+        [Display(Name = "Cli c ID")]
         public System.Guid CliCId { get; set; } // CLI_cID
+
+        [Column(@"FOD_cID", Order = 3, TypeName = "uniqueidentifier")]
+        [Required]
+        [Display(Name = "Fod c ID")]
         public System.Guid FodCId { get; set; } // FOD_cID
+
+        [Column(@"FDC_dtDeleted", Order = 4, TypeName = "datetime")]
+        [Display(Name = "Fdc dt deleted")]
         public System.DateTime? FdcDtDeleted { get; set; } // FDC_dtDeleted
 
         // Reverse navigation
@@ -35,11 +55,11 @@ namespace NorthwindDemo
         /// <summary>
         /// Parent CliClient pointed by [FDC_FormDefinitionVersionClients].([CliCId]) (FK_FDC_FormDefinitionVersionClients_CLI_Clients)
         /// </summary>
-        public virtual CliClient CliClient { get; set; } // FK_FDC_FormDefinitionVersionClients_CLI_Clients
+        [ForeignKey("CliCId")] public virtual CliClient CliClient { get; set; } // FK_FDC_FormDefinitionVersionClients_CLI_Clients
         /// <summary>
         /// Parent FodFormDefinition pointed by [FDC_FormDefinitionVersionClients].([FodCId]) (FK_FDC_FormDefinitionVersionClients_FOD_FormDefinitions)
         /// </summary>
-        public virtual FodFormDefinition FodFormDefinition { get; set; } // FK_FDC_FormDefinitionVersionClients_FOD_FormDefinitions
+        [ForeignKey("FodCId")] public virtual FodFormDefinition FodFormDefinition { get; set; } // FK_FDC_FormDefinitionVersionClients_FOD_FormDefinitions
 
         public FdcFormDefinitionVersionClient()
         {

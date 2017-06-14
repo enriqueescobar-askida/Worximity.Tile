@@ -10,6 +10,8 @@
 // TargetFrameworkVersion = 4.7
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NorthwindDemo
 {
@@ -25,17 +27,11 @@ namespace NorthwindDemo
 
         public LoeLogExceptionConfiguration(string schema)
         {
-            ToTable("LOE_LogExceptions", schema);
-            HasKey(x => x.LoeINoSeq);
-
-            Property(x => x.LoeINoSeq).HasColumnName(@"LOE_iNoSeq").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
-            Property(x => x.CliCId).HasColumnName(@"CLI_cID").HasColumnType("uniqueidentifier").IsOptional();
-            Property(x => x.LoeDtCreated).HasColumnName(@"LOE_dtCreated").HasColumnType("datetime").IsRequired();
-            Property(x => x.LoeCType).HasColumnName(@"LOE_cType").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(50);
-            Property(x => x.LoeCMessage).HasColumnName(@"LOE_cMessage").HasColumnType("varchar(max)").IsRequired().IsUnicode(false);
-            Property(x => x.LoeCNote).HasColumnName(@"LOE_cNote").HasColumnType("varchar(max)").IsOptional().IsUnicode(false);
-            Property(x => x.LoeDtLastModified).HasColumnName(@"LOE_dtLastModified").HasColumnType("datetime").IsOptional();
-            Property(x => x.LoeBDeleted).HasColumnName(@"LOE_bDeleted").HasColumnType("bit").IsRequired();
+            Property(x => x.CliCId).IsOptional();
+            Property(x => x.LoeCType).IsOptional().IsUnicode(false);
+            Property(x => x.LoeCMessage).IsUnicode(false);
+            Property(x => x.LoeCNote).IsOptional().IsUnicode(false);
+            Property(x => x.LoeDtLastModified).IsOptional();
         }
     }
 

@@ -10,6 +10,8 @@
 // TargetFrameworkVersion = 4.7
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NorthwindDemo
 {
@@ -95,6 +97,8 @@ namespace NorthwindDemo
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Conventions.Add(new CodeFirstStoreFunctions.FunctionsConvention<TileboardLocatorContext>("dbo"));
+
             modelBuilder.Configurations.Add(new ApiKeyConfiguration());
             modelBuilder.Configurations.Add(new ApiRequestLogConfiguration());
             modelBuilder.Configurations.Add(new ApplicationConfiguration());
@@ -166,6 +170,7 @@ namespace NorthwindDemo
             return (int) procResultParam.Value;
         }
 
+        // Table Valued Functions
     }
 }
 // </auto-generated>

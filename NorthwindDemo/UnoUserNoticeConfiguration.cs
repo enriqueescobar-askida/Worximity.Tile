@@ -10,6 +10,8 @@
 // TargetFrameworkVersion = 4.7
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NorthwindDemo
 {
@@ -25,17 +27,10 @@ namespace NorthwindDemo
 
         public UnoUserNoticeConfiguration(string schema)
         {
-            ToTable("UNO_UserNotices", schema);
-            HasKey(x => x.UnoCId);
-
-            Property(x => x.UnoCId).HasColumnName(@"UNO_cID").HasColumnType("uniqueidentifier").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
-            Property(x => x.UnoDtCreated).HasColumnName(@"UNO_dtCreated").HasColumnType("datetime").IsRequired();
-            Property(x => x.UnoDtLastModified).HasColumnName(@"UNO_dtLastModified").HasColumnType("datetime").IsRequired();
-            Property(x => x.UnoDtDeleted).HasColumnName(@"UNO_dtDeleted").HasColumnType("datetime").IsOptional();
-            Property(x => x.UnoVcConfidentialityEn).HasColumnName(@"UNO_vcConfidentialityEN").HasColumnType("nvarchar(max)").IsOptional();
-            Property(x => x.UnoVcConfidentialityFr).HasColumnName(@"UNO_vcConfidentialityFR").HasColumnType("nvarchar(max)").IsOptional();
-            Property(x => x.UnoIVersion).HasColumnName(@"UNO_iVersion").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
-            Property(x => x.UnoVcConfidentialityEs).HasColumnName(@"UNO_vcConfidentialityES").HasColumnType("nvarchar(max)").IsOptional();
+            Property(x => x.UnoDtDeleted).IsOptional();
+            Property(x => x.UnoVcConfidentialityEn).IsOptional();
+            Property(x => x.UnoVcConfidentialityFr).IsOptional();
+            Property(x => x.UnoVcConfidentialityEs).IsOptional();
         }
     }
 

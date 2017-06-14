@@ -10,6 +10,8 @@
 // TargetFrameworkVersion = 4.7
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NorthwindDemo
 {
@@ -25,12 +27,7 @@ namespace NorthwindDemo
 
         public UserAccountGroupConfiguration(string schema)
         {
-            ToTable("UserAccountGroup", schema);
-            HasKey(x => x.UserAccountGroupId);
-
-            Property(x => x.UserAccountGroupId).HasColumnName(@"UserAccountGroupId").HasColumnType("bigint").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
-            Property(x => x.Name).HasColumnName(@"Name").HasColumnType("nvarchar").IsOptional().HasMaxLength(50);
-            Property(x => x.CreateUserAccountDefault).HasColumnName(@"CreateUserAccountDefault").HasColumnType("bit").IsRequired();
+            Property(x => x.Name).IsOptional();
         }
     }
 

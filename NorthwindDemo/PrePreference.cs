@@ -10,16 +10,35 @@
 // TargetFrameworkVersion = 4.7
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NorthwindDemo
 {
 
     // PRE_Preferences
+    [Table("PRE_Preferences", Schema = "dbo")]
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.31.1.0")]
     public class PrePreference
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Column(@"PRE_iID", Order = 1, TypeName = "int")]
+        [Index(@"PK_PRE_Preferences", 1, IsUnique = true, IsClustered = true)]
+        [Required]
+        [Key]
+        [Display(Name = "Pre i ID")]
         public int PreIId { get; set; } // PRE_iID (Primary key)
+
+        [Column(@"PRE_cKey", Order = 2, TypeName = "nvarchar")]
+        [MaxLength(100)]
+        [StringLength(100)]
+        [Display(Name = "Pre c key")]
         public string PreCKey { get; set; } // PRE_cKey (length: 100)
+
+        [Column(@"PRE_cValue", Order = 3, TypeName = "nvarchar")]
+        [MaxLength(1024)]
+        [StringLength(1024)]
+        [Display(Name = "Pre c value")]
         public string PreCValue { get; set; } // PRE_cValue (length: 1024)
     }
 

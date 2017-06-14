@@ -10,6 +10,8 @@
 // TargetFrameworkVersion = 4.7
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NorthwindDemo
 {
@@ -25,12 +27,6 @@ namespace NorthwindDemo
 
         public KitTemplateConfiguration(string schema)
         {
-            ToTable("KitTemplate", schema);
-            HasKey(x => x.KitTemplateId);
-
-            Property(x => x.KitTemplateId).HasColumnName(@"KitTemplateId").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
-            Property(x => x.Name).HasColumnName(@"Name").HasColumnType("nvarchar").IsRequired().HasMaxLength(100);
-            Property(x => x.Abbr).HasColumnName(@"Abbr").HasColumnType("nvarchar").IsRequired().HasMaxLength(30);
         }
     }
 

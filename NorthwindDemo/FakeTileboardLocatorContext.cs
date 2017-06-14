@@ -10,6 +10,8 @@
 // TargetFrameworkVersion = 4.7
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NorthwindDemo
 {
@@ -145,6 +147,7 @@ namespace NorthwindDemo
             return 0;
         }
 
+        // Table Valued Functions
     }
 }
 // </auto-generated>

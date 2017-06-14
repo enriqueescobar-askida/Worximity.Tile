@@ -10,16 +10,34 @@
 // TargetFrameworkVersion = 4.7
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NorthwindDemo
 {
 
     // UserAccountGroup
+    [Table("UserAccountGroup", Schema = "dbo")]
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.31.1.0")]
     public class UserAccountGroup
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Column(@"UserAccountGroupId", Order = 1, TypeName = "bigint")]
+        [Index(@"PK_UAG_UserAccountGroups", 1, IsUnique = true, IsClustered = true)]
+        [Required]
+        [Key]
+        [Display(Name = "User account group ID")]
         public long UserAccountGroupId { get; set; } // UserAccountGroupId (Primary key)
+
+        [Column(@"Name", Order = 2, TypeName = "nvarchar")]
+        [MaxLength(50)]
+        [StringLength(50)]
+        [Display(Name = "Name")]
         public string Name { get; set; } // Name (length: 50)
+
+        [Column(@"CreateUserAccountDefault", Order = 3, TypeName = "bit")]
+        [Required]
+        [Display(Name = "Create user account default")]
         public bool CreateUserAccountDefault { get; set; } // CreateUserAccountDefault
 
         // Reverse navigation

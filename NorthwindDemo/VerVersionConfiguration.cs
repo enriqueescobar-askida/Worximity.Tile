@@ -10,6 +10,8 @@
 // TargetFrameworkVersion = 4.7
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NorthwindDemo
 {
@@ -25,13 +27,9 @@ namespace NorthwindDemo
 
         public VerVersionConfiguration(string schema)
         {
-            ToTable("VER_Versions", schema);
-            HasKey(x => x.VerCId);
-
-            Property(x => x.VerCId).HasColumnName(@"VER_cID").HasColumnType("uniqueidentifier").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
-            Property(x => x.VerCKey).HasColumnName(@"VER_cKey").HasColumnType("varchar").IsRequired().IsUnicode(false).HasMaxLength(50);
-            Property(x => x.VerCValue).HasColumnName(@"VER_cValue").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(50);
-            Property(x => x.VerCAppStoreSite).HasColumnName(@"VER_cAppStoreSite").HasColumnType("varchar").IsOptional().IsUnicode(false).HasMaxLength(100);
+            Property(x => x.VerCKey).IsUnicode(false);
+            Property(x => x.VerCValue).IsOptional().IsUnicode(false);
+            Property(x => x.VerCAppStoreSite).IsOptional().IsUnicode(false);
         }
     }
 

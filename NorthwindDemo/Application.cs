@@ -10,16 +10,36 @@
 // TargetFrameworkVersion = 4.7
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NorthwindDemo
 {
 
     // Application
+    [Table("Application", Schema = "dbo")]
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.31.1.0")]
     public class Application
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Column(@"ApplicationId", Order = 1, TypeName = "bigint")]
+        [Index(@"PK_APP_Applications", 1, IsUnique = true, IsClustered = true)]
+        [Required]
+        [Key]
+        [Display(Name = "Application ID")]
         public long ApplicationId { get; set; } // ApplicationId (Primary key)
+
+        [Column(@"ApplicationKey", Order = 2, TypeName = "nvarchar")]
+        [Index(@"IX_APP_cKey", 1, IsUnique = true, IsClustered = false)]
+        [MaxLength(50)]
+        [StringLength(50)]
+        [Display(Name = "Application key")]
         public string ApplicationKey { get; set; } // ApplicationKey (length: 50)
+
+        [Column(@"Description", Order = 3, TypeName = "nvarchar")]
+        [MaxLength(100)]
+        [StringLength(100)]
+        [Display(Name = "Description")]
         public string Description { get; set; } // Description (length: 100)
 
         // Reverse navigation

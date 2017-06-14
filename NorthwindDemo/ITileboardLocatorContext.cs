@@ -10,6 +10,8 @@
 // TargetFrameworkVersion = 4.7
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NorthwindDemo
 {
@@ -61,6 +63,8 @@ namespace NorthwindDemo
         int UseUpdateDev();
         // UseUpdateDevAsync cannot be created due to having out parameters, or is relying on the procedure result (int)
 
+
+        // Table Valued Functions
     }
 
 }

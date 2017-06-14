@@ -10,6 +10,8 @@
 // TargetFrameworkVersion = 4.7
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NorthwindDemo
 {
@@ -25,20 +27,9 @@ namespace NorthwindDemo
 
         public ApiKeyConfiguration(string schema)
         {
-            ToTable("ApiKey", schema);
-            HasKey(x => x.ApiKeyId);
+            Property(x => x.UserAccountId).IsOptional();
+            Property(x => x.UseCId).IsOptional();
 
-            Property(x => x.ApiKeyId).HasColumnName(@"ApiKeyId").HasColumnType("bigint").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
-            Property(x => x.Key).HasColumnName(@"Key").HasColumnType("nvarchar").IsRequired().HasMaxLength(50);
-            Property(x => x.LastLogin).HasColumnName(@"LastLogin").HasColumnType("datetime").IsRequired();
-            Property(x => x.ApplicationId).HasColumnName(@"ApplicationId").HasColumnType("bigint").IsRequired();
-            Property(x => x.UserAccountId).HasColumnName(@"UserAccountId").HasColumnType("bigint").IsOptional();
-            Property(x => x.UseCId).HasColumnName(@"USE_cID").HasColumnType("uniqueidentifier").IsOptional();
-
-            // Foreign keys
-            HasOptional(a => a.UserAccount).WithMany(b => b.ApiKeys).HasForeignKey(c => c.UserAccountId).WillCascadeOnDelete(false); // FK_AKE_ApiKeys_USA_UserAccounts1
-            HasOptional(a => a.UseUser).WithMany(b => b.ApiKeys).HasForeignKey(c => c.UseCId).WillCascadeOnDelete(false); // FK_ApiKey_USE_Users
-            HasRequired(a => a.Application).WithMany(b => b.ApiKeys).HasForeignKey(c => c.ApplicationId).WillCascadeOnDelete(false); // FK_AKE_ApiKeys_APP_Applications
         }
     }
 

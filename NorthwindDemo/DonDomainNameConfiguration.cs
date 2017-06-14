@@ -10,6 +10,8 @@
 // TargetFrameworkVersion = 4.7
 #pragma warning disable 1591    //  Ignore "Missing XML Comment" warning
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NorthwindDemo
 {
@@ -25,15 +27,8 @@ namespace NorthwindDemo
 
         public DonDomainNameConfiguration(string schema)
         {
-            ToTable("DON_DomainName", schema);
-            HasKey(x => x.DonLId);
+            Property(x => x.DonCDomainName).IsOptional();
 
-            Property(x => x.DonLId).HasColumnName(@"DON_lID").HasColumnType("int").IsRequired().HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
-            Property(x => x.CliCId).HasColumnName(@"CLI_cID").HasColumnType("uniqueidentifier").IsRequired();
-            Property(x => x.DonCDomainName).HasColumnName(@"DON_cDomainName").HasColumnType("nvarchar").IsOptional().HasMaxLength(100);
-
-            // Foreign keys
-            HasRequired(a => a.CliClient).WithMany(b => b.DonDomainNames).HasForeignKey(c => c.CliCId).WillCascadeOnDelete(false); // FK_DON_DomainName_CLI_Clients
         }
     }
 
