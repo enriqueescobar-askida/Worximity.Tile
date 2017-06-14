@@ -1,16 +1,17 @@
-﻿using System;
-using System.Linq;
-
-namespace NorthwindDemo
+﻿namespace NorthwindDemo
 {
+    using System;
+    using System.Linq;
+    using Context;
+
     class Program
     {
         static void Main(string[] args)
         {
             using (var db = new TileboardLocatorContext())
             {
-                /*var data = db.Categories;
-                foreach (var item in data)
+                var data = db.Companies;
+                /*foreach (var item in data)
                 {
                     Console.WriteLine(item.CategoryId + " " + item.CategoryName);
                 }

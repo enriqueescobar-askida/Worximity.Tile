@@ -53,188 +53,203 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiKey.cs">
+    <Compile Include="Configurations\ApiKeyConfiguration.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="ApiKeyConfiguration.cs">
+    <Compile Include="Configurations\ApiRequestLogConfiguration.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="ApiRequestLog.cs">
+    <Compile Include="Configurations\ApplicationConfiguration.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="ApiRequestLogConfiguration.cs">
+    <Compile Include="Configurations\CliClientConfiguration.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Application.cs">
+    <Compile Include="Configurations\CompanyConfiguration.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="ApplicationConfiguration.cs">
+    <Compile Include="Configurations\CseClientSensorConfiguration.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="CliClient.cs">
+    <Compile Include="Configurations\DonDomainNameConfiguration.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="CliClientConfiguration.cs">
+    <Compile Include="Configurations\FdcFormDefinitionVersionClientConfiguration.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Company.cs">
+    <Compile Include="Configurations\FdvFormDefinitionVersionConfiguration.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="CompanyConfiguration.cs">
+    <Compile Include="Configurations\FodFormDefinitionConfiguration.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="CseClientSensor.cs">
+    <Compile Include="Configurations\FstFormSyncTaskConfiguration.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="CseClientSensorConfiguration.cs">
+    <Compile Include="Configurations\HfdHistoryFormDefinitionVersionConfiguration.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="DonDomainName.cs">
+    <Compile Include="Configurations\IpsIpServerConfiguration.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="DonDomainNameConfiguration.cs">
+    <Compile Include="Configurations\KitTemplateAttributeConfiguration.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="FakeDbSet.cs">
+    <Compile Include="Configurations\KitTemplateConfiguration.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="FakeTileboardLocatorContext.cs">
+    <Compile Include="Configurations\KitTemplateMeasureDefinitionConfiguration.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="FdcFormDefinitionVersionClient.cs">
+    <Compile Include="Configurations\LoeLogExceptionConfiguration.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="FdcFormDefinitionVersionClientConfiguration.cs">
+    <Compile Include="Configurations\PrePreferenceConfiguration.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="FdvFormDefinitionVersion.cs">
+    <Compile Include="Configurations\RightActionConfiguration.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="FdvFormDefinitionVersionConfiguration.cs">
+    <Compile Include="Configurations\RightConfiguration.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="FodFormDefinition.cs">
+    <Compile Include="Configurations\SerServerConfiguration.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="FodFormDefinitionConfiguration.cs">
+    <Compile Include="Configurations\TileboardDb.cs">
+      <DependentUpon>TileboardDb.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Configurations\UnoUserNoticeConfiguration.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="FstFormSyncTask.cs">
+    <Compile Include="Configurations\UserAccountClientConfiguration.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="FstFormSyncTaskConfiguration.cs">
+    <Compile Include="Configurations\UserAccountConfiguration.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="HfdHistoryFormDefinitionVersion.cs">
+    <Compile Include="Configurations\UserAccountGroupConfiguration.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="HfdHistoryFormDefinitionVersionConfiguration.cs">
+    <Compile Include="Configurations\UseUserConfiguration.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="IpsIpServer.cs">
+    <Compile Include="Configurations\VerVersionConfiguration.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="IpsIpServerConfiguration.cs">
+    <Compile Include="Context\FakeDbSet.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="ITileboardLocatorContext.cs">
+    <Compile Include="Context\FakeTileboardLocatorContext.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="KitTemplate.cs">
+    <Compile Include="Context\TileboardDb.cs">
+      <DependentUpon>TileboardDb.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Context\TileboardLocatorContext.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="KitTemplateAttribute.cs">
+    <Compile Include="Entities\ApiKey.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="KitTemplateAttributeConfiguration.cs">
+    <Compile Include="Entities\ApiRequestLog.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="KitTemplateConfiguration.cs">
+    <Compile Include="Entities\Application.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="KitTemplateMeasureDefinition.cs">
+    <Compile Include="Entities\CliClient.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="KitTemplateMeasureDefinitionConfiguration.cs">
+    <Compile Include="Entities\Company.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="LastCreatedUser.cs">
+    <Compile Include="Entities\CseClientSensor.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="LoeLogException.cs">
+    <Compile Include="Entities\DonDomainName.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="LoeLogExceptionConfiguration.cs">
+    <Compile Include="Entities\FdcFormDefinitionVersionClient.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="PrePreference.cs">
+    <Compile Include="Entities\FdvFormDefinitionVersion.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="PrePreferenceConfiguration.cs">
+    <Compile Include="Entities\FodFormDefinition.cs">
+      <DependentUpon>TileboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\FstFormSyncTask.cs">
+      <DependentUpon>TileboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\HfdHistoryFormDefinitionVersion.cs">
+      <DependentUpon>TileboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\IpsIpServer.cs">
+      <DependentUpon>TileboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\KitTemplate.cs">
+      <DependentUpon>TileboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\KitTemplateAttribute.cs">
+      <DependentUpon>TileboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\KitTemplateMeasureDefinition.cs">
+      <DependentUpon>TileboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\LastCreatedUser.cs">
+      <DependentUpon>TileboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\LoeLogException.cs">
+      <DependentUpon>TileboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\PrePreference.cs">
+      <DependentUpon>TileboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Right.cs">
+      <DependentUpon>TileboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\RightAction.cs">
+      <DependentUpon>TileboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SerServer.cs">
+      <DependentUpon>TileboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TileboardDb.cs">
+      <DependentUpon>TileboardDb.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Entities\UnoUserNotice.cs">
+      <DependentUpon>TileboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserAccount.cs">
+      <DependentUpon>TileboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserAccountClient.cs">
+      <DependentUpon>TileboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserAccountGroup.cs">
+      <DependentUpon>TileboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UseUser.cs">
+      <DependentUpon>TileboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\VerVersion.cs">
+      <DependentUpon>TileboardDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\ITileboardLocatorContext.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Right.cs">
-      <DependentUpon>TileboardDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RightAction.cs">
-      <DependentUpon>TileboardDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RightActionConfiguration.cs">
-      <DependentUpon>TileboardDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RightConfiguration.cs">
-      <DependentUpon>TileboardDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SerServer.cs">
-      <DependentUpon>TileboardDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SerServerConfiguration.cs">
-      <DependentUpon>TileboardDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TileboardDb.cs">
+    <Compile Include="Interfaces\TileboardDb.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TileboardDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TileboardLocatorContext.cs">
-      <DependentUpon>TileboardDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UnoUserNotice.cs">
-      <DependentUpon>TileboardDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UnoUserNoticeConfiguration.cs">
-      <DependentUpon>TileboardDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UserAccount.cs">
-      <DependentUpon>TileboardDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UserAccountClient.cs">
-      <DependentUpon>TileboardDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UserAccountClientConfiguration.cs">
-      <DependentUpon>TileboardDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UserAccountConfiguration.cs">
-      <DependentUpon>TileboardDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UserAccountGroup.cs">
-      <DependentUpon>TileboardDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UserAccountGroupConfiguration.cs">
-      <DependentUpon>TileboardDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UseUser.cs">
-      <DependentUpon>TileboardDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UseUserConfiguration.cs">
-      <DependentUpon>TileboardDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="VerVersion.cs">
-      <DependentUpon>TileboardDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="VerVersionConfiguration.cs">
       <DependentUpon>TileboardDb.tt</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -248,10 +263,23 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="TileboardDb.tt">
+    <Content Include="Configurations\TileboardDb.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TileboardDb.cs</LastGenOutput>
+    </Content>
+    <Content Include="Context\TileboardDb.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TileboardDb.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entities\TileboardDb.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TileboardDb.cs</LastGenOutput>
+    </Content>
+    <Content Include="Interfaces\TileboardDb.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>TileboardDb.cs</LastGenOutput>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
