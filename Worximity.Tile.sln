@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.12
+VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{C7948720-97CF-4117-B544-1E5C9F82640D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleNorthwind", "ConsoleNorthwind\ConsoleNorthwind.csproj", "{10A65999-822E-4115-9C3D-05C7ED580991}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocatorDemo", "NorthwindDemo\LocatorDemo.csproj", "{2D03C234-5DBA-472F-A91C-1DDBAF5C9591}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C7948720-97CF-4117-B544-1E5C9F82640D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C7948720-97CF-4117-B544-1E5C9F82640D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C7948720-97CF-4117-B544-1E5C9F82640D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C7948720-97CF-4117-B544-1E5C9F82640D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{10A65999-822E-4115-9C3D-05C7ED580991}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{10A65999-822E-4115-9C3D-05C7ED580991}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{10A65999-822E-4115-9C3D-05C7ED580991}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{10A65999-822E-4115-9C3D-05C7ED580991}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D03C234-5DBA-472F-A91C-1DDBAF5C9591}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D03C234-5DBA-472F-A91C-1DDBAF5C9591}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D03C234-5DBA-472F-A91C-1DDBAF5C9591}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D03C234-5DBA-472F-A91C-1DDBAF5C9591}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
